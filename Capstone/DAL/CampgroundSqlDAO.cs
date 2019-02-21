@@ -57,7 +57,7 @@ namespace Capstone.DAL
 
             return campground;
         }
-        private Campground GetCampground(int campground_id)
+        public Campground GetCampground(int campground_id)
         {
 
             Campground campground = new Campground();

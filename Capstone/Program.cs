@@ -22,9 +22,7 @@ namespace Capstone
             string connectionString = configuration.GetConnectionString("Project");
             ParkSqlDAO parkDAO = new ParkSqlDAO(connectionString);
             MainMenu mainmenu = new MainMenu(parkDAO);
-            
-            
-            
+            mainmenu.Run();
 
         }
     }
