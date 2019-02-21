@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Capstone.Models
+namespace Capstone.DAL
 {
-    class Class1
+    interface Interface1
     {
     }
 }
