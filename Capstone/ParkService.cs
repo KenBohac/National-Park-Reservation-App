@@ -92,7 +92,11 @@ namespace Capstone
         {
             return this.ReservationDAO.GetReservation(reservationId);
         }
-           
+        public IList<Site> SearchForOpenSites(int campgroundId, DateTime startDate, DateTime endDate)
+        {
+            return this.SiteDAO.SearchForOpenSites(campgroundId, startDate, endDate);
+        }
+         
     }
 
 

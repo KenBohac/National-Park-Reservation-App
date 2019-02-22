@@ -84,5 +84,41 @@ namespace Capstone.DAL
             }
             return site;
         }
+        public IList<Site> SearchForOpenSites(int campgroundId, DateTime startDate, DateTime endDate)
+        {
+            IList<Site> openSites = new List<Site>();
+
+            try
+            {
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    string sql = @"SELECT TOP 5 site_id FROM site 
+                                WHERE site.site_id NOT IN 
+                                (SELECT reservation.site_id FROM reservation 
+                                WHERE @StartDate BETWEEN reservation.from_date 
+                                AND reservation.to_dateOR @EndDate between reservation.from_date AND reservation.to_date)
+                                AND @campgroundID = site.campground_id; ";
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@StartDate", startDate);
+                    cmd.Parameters.AddWithValue("@EndDate", endDate);
+                    cmd.Parameters.AddWithValue("@campgroundId", campgroundId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Site openSite = ConvertReaderToSite(reader);
+                        openSites.Add(openSite);
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("An error has occured in getting your reservation");
+                Console.WriteLine(ex.Message);
+            }
+            return openSites;
+        }
     }
 }

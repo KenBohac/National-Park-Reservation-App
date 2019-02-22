@@ -85,35 +85,8 @@ namespace Capstone.DAL
             return reservation;
 
 
-        } public IList <Reservation> SearchForReservation (int campgroundId, DateTime startdate, DateTime endDate)
-        {
-            IList <Reservation>  reservations  = new List <Reservation>();
-
-            try
-            {
-
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(, conn);
-                    cmd.Parameters.AddWithValue("", );
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        Reservation reservation = ConvertReaderToReservation(reader);
-
-                    }
-
-                }
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine("An error has occured in getting your reservation");
-                Console.WriteLine(ex.Message);
-            }
-            return reservations;
         }
-            
+         
     }
 }
 

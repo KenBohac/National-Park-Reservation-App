@@ -19,5 +19,13 @@ namespace Capstone.DAL
         /// <param name="campgroundId"></param>
         /// <returns></returns>
         IList<Site> GetAllSites(int campgroundId);
+        /// <summary>
+        /// Searches for an open site, by input park id and entered dates. Returns open sites in the parameters.
+        /// </summary>
+        /// <param name="campgroundId"></param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns></returns>
+        IList<Site> SearchForOpenSites(int campgroundId, DateTime startDate, DateTime endDate);
     }
 }

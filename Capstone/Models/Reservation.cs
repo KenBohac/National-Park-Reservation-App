@@ -15,6 +15,12 @@ namespace Capstone.Models
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
         public DateTime CreateDate { get; set; }
+        public static int CalculateStay(DateTime fromDate, DateTime toDate)
+        {
+            TimeSpan ts = toDate -fromDate;
+            int days = (int)ts.TotalDays;
+            return days;
+        }
 
     }
 }
