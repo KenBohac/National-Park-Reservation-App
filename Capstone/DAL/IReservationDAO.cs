@@ -5,7 +5,7 @@ using Capstone.Models;
 
 namespace Capstone.DAL
 {
-    interface IReservationDAO
+    public interface IReservationDAO
     {
         /// <summary>
         /// Returns an individual reservation.
@@ -21,4 +21,5 @@ namespace Capstone.DAL
         IList<Reservation> GetAllReservations(int siteId);
         
     }
+    
 }

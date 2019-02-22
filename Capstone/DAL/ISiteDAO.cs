@@ -5,7 +5,7 @@ using Capstone.Models;
 
 namespace Capstone.DAL
 {
-    interface ISiteDAO
+    public interface ISiteDAO
     {
         /// <summary>
         /// Returns a specific site.

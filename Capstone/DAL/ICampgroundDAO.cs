@@ -4,7 +4,7 @@ using System.Text;
 using Capstone.Models;
 namespace Capstone.DAL
 {
-    interface ICampgroundDAO
+    public interface ICampgroundDAO
     {
         /// <summary>
         /// Gets an individual campground.

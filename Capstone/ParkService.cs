@@ -26,12 +26,74 @@ namespace Capstone
             this.ReservationDAO = reservationDAO;
 
         }
-
+        /// <summary>
+        /// Returns a list of all parks.
+        /// </summary>
+        /// <returns></returns>
         public IList<Park> GetAllParks()
         {
             return this.ParkDAO.GetAllParks();
-            
         }
-        
+        /// <summary>
+        /// Returns an individual park.
+        /// </summary>
+        /// <param name="parkId"></param>
+        /// <returns></returns>
+        public Park GetPark(int parkId)
+        {
+            return this.ParkDAO.GetPark(parkId);
+        }
+        /// <summary>
+        /// Returns a list of all the campgrounds of the given input park.
+        /// </summary>
+        /// <param name="parkId"></param>
+        /// <returns></returns>
+        public IList<Campground> GetAllCampgrounds(int parkId)
+        {
+            return this.CampgroundDAO.GetAllCampgrounds(parkId);
+        }
+        /// <summary>
+        /// Returns an individual campground of the given input campground id.
+        /// </summary>
+        /// <param name="campgroundId"></param>
+        /// <returns></returns>
+        public Campground GetCampground(int campgroundId)
+        {
+            return this.CampgroundDAO.GetCampground(campgroundId);
+        }
+        /// <summary>
+        /// Returns a list of all sites in a given input campground id.
+        /// </summary>
+        /// <param name="campgroundId"></param>
+        /// <returns></returns>
+        public IList<Site> GetAllSites(int campgroundId)
+        {
+            return this.SiteDAO.GetAllSites(campgroundId);
+        }
+        /// <summary>
+        /// Returns an individual site given an input site id.
+        /// </summary>
+        /// <param name="siteId"></param>
+        /// <returns></returns>
+        public Site GetSite(int siteId)
+        {
+            return this.SiteDAO.GetSite(siteId);
+        }
+        /// <summary>
+        /// Returns a list of all reservations for a given site.
+        /// </summary>
+        /// <param name="campgroundId"></param>
+        /// <returns></returns>
+        public IList<Reservation> GetAllReservations(int siteId)
+        {
+            return this.ReservationDAO.GetAllReservations(siteId);
+        }
+        public Reservation GetReservation(int reservationId)
+        {
+            return this.ReservationDAO.GetReservation(reservationId);
+        }
+           
     }
+
+
 }
