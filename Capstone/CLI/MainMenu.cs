@@ -25,14 +25,17 @@ namespace Capstone.CLI
                 if (choice == "1")
                 {
                     Console.Clear();
+                    Console.WriteLine("Select a Park for further details");
                     DisplayParks();
-                    
+                   
+
                 }
                 else if (choice == "2")
                 {
                     Console.WriteLine("Enter the park id you would like to view");
-                    int park = Convert.ToInt32(Console.ReadLine());
+                    int park = int.Parse(Console.ReadLine());
                     ViewParkDetails(park);
+                    
                     //TODO CreateReservation?
                 }
                 else if (choice == "3")
@@ -45,14 +48,13 @@ namespace Capstone.CLI
                 }
                 else
                     Console.WriteLine("Invalid input, please try again");
-
-
+               
             }
 
         }
         public void DisplayParks()
         {
-            IList<Park> parks = ParkDAO.GetAllParks();
+            IList<Park> parks =ParkService.GetAllParks();
             foreach(Park park in parks)
             {
                 string para = ")";
@@ -74,18 +76,26 @@ namespace Capstone.CLI
         }
         public void ViewParkDetails(int parkId)
         {
-            Park park = ParkDAO.GetPark(parkId);
-            Console.WriteLine(park.Name);
-            Console.WriteLine($"Location:{park.Location.PadLeft(5)}");
-            Console.WriteLine($"Establish:{park.EstablishDate}");
-            Console.WriteLine(park.Area);
-            Console.WriteLine(park.Visitors);
+            Park park = this.ParkService.GetPark(parkId);
+            Console.WriteLine($"Park:              {park.Name}");
+            Console.WriteLine($"Location:          {park.Location}");
+            Console.WriteLine($"Established:       {park.EstablishDate.ToShortDateString()}");
+            Console.WriteLine($"Area:              {park.Area} sq.km");
+            Console.WriteLine($"Annual Visitors:   {park.Visitors}");
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine(park.Description);
-            Console.ReadLine();
+           
+            CampgroundMenu cm = new CampgroundMenu(this);
+            cm.Run();
         }
-        public MainMenu(ParkSqlDAO parkDAO)
+
+        public ParkService ParkService { get; private set; }
+        
+        public MainMenu(ParkService parkService)
         {
-            this.ParkDAO = parkDAO;
+            this.ParkService = parkService; 
         }
+
     }
 }
