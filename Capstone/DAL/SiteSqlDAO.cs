@@ -56,15 +56,6 @@ namespace Capstone.DAL
             site.Utilities = Convert.ToBoolean(reader["utilities"]);
 
             return site;
-            //site.SiteId = Convert.ToInt32(reader["site_id"]);
-            //site.CampgroundId = Convert.ToInt32(reader["campground_id"]);
-            //site.SiteNumber = Convert.ToInt32(reader["site_number"]);
-            //site.MaxOccupancy = Convert.ToInt32(reader["max_occupancy"]);
-            //site.Accessible = Convert.ToBoolean(reader["accessible"]);
-            //site.MaxRVLength = Convert.ToInt32(reader["max_rv_length"]);
-            //site.Utilities = Convert.ToBoolean(reader["utilities"]);
-
-            //return site;
         }
         public Site GetSite(int siteId)
         {
