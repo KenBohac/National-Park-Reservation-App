@@ -10,10 +10,10 @@ namespace Capstone.DAL
     public class ParkSqlDAO : IParkDAO
     {
         private string connectionString;
-        
-            public ParkSqlDAO (string dbconnection)
+
+        public ParkSqlDAO(string dbconnection)
         {
-            connectionString = dbconnection; 
+            connectionString = dbconnection;
         }
 
         public IList<Park> GetAllParks()
@@ -30,10 +30,8 @@ namespace Capstone.DAL
                     {
                         Park park = ConvertReaderToPark(reader);
                         parks.Add(park);
-
-                    } 
+                    }
                 }
-                
             }
             catch (SqlException ex)
             {
@@ -73,19 +71,15 @@ namespace Capstone.DAL
                     {
                         park = ConvertReaderToPark(reader);
                     }
-
-
                 }
-
-
             }
             catch (SqlException ex)
             {
                 Console.WriteLine("An error occured fetching your park.");
                 Console.WriteLine(ex.Message);
             }
-             return park;
+            return park;
         }
-       
+
     }
 }

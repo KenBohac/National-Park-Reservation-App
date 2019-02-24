@@ -26,7 +26,7 @@ namespace Capstone.DAL
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM site WHERE campground_id = @campgroundid");
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM site WHERE campground_id = @campgroundid", conn);
                     cmd.Parameters.AddWithValue("@campgroundid", campgroundId);
                     SqlDataReader reader = cmd.ExecuteReader();
                     while(reader.Read())
