@@ -60,7 +60,7 @@ namespace Capstone.DAL
         public Reservation GetReservation(int reservationId)
         {
 
-            Reservation reservation= new Reservation();
+            Reservation reservation = new Reservation();
             try
             {
 
@@ -72,7 +72,7 @@ namespace Capstone.DAL
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                       reservation = ConvertReaderToReservation(reader);
+                        reservation = ConvertReaderToReservation(reader);
                     }
 
                 }
@@ -86,7 +86,39 @@ namespace Capstone.DAL
 
 
         }
-         
+        public int CreateReservation(Reservation reservation)
+        {
+            int reservationId = 0;
+
+            try
+            {
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO reservation VALUES (@siteId, @name, @from_date, @to_date, @create_date);", conn);
+                    cmd.Parameters.AddWithValue("@siteId", reservation.SiteId);
+                    cmd.Parameters.AddWithValue("@name", reservation.Name);
+                    cmd.Parameters.AddWithValue("@from_date", reservation.FromDate);
+                    cmd.Parameters.AddWithValue("@to_date", reservation.ToDate);
+                    cmd.Parameters.AddWithValue("@create_date", DateTime.Now);
+                    cmd.ExecuteNonQuery();
+                    cmd = new SqlCommand("SELECT MAX(reservation_id) from reservation;", conn);
+
+                    reservationId = Convert.ToInt32(cmd.ExecuteScalar());
+
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("An error has occured in getting your reservation");
+                Console.WriteLine(ex.Message);
+            }
+            //reservationId will serve as the user's reservation confirmation number
+            return reservationId;
+
+        }
     }
 }
 

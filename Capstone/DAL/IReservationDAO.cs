@@ -19,8 +19,14 @@ namespace Capstone.DAL
         /// <param name="siteId"></param>
         /// <returns></returns>
         IList<Reservation> GetAllReservations(int siteId);
+        /// <summary>
+        /// Creates a new reservation if possible
+        /// </summary>
+        /// <param name="reservation"></param>
+        /// <returns></returns>
+        int CreateReservation(Reservation reservation);
 
-        
+
     }
     
 }

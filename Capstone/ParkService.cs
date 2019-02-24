@@ -110,6 +110,11 @@ namespace Capstone
             int days = (int)ts.TotalDays;
             return days;
         }
+        public int CreateReservation(Reservation reservation)
+        {
+            return this.ReservationDAO.CreateReservation(reservation);
+
+        }
     }
 
 
