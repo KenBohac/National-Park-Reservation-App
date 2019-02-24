@@ -1,4 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Capstone.DAL;
+using Capstone.Models;
+using System.Collections.Generic;
+using System.Text;
+using System.Data.SqlClient;
 
 namespace Capstone.Tests
 {
@@ -6,7 +11,7 @@ namespace Capstone.Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ()
         {
         }
     }

@@ -65,6 +65,7 @@ namespace Capstone.CLI
         public void Greeting()
         {
             Console.WriteLine("Welcome to the National Park Campground Reservation System!");
+            Console.WriteLine();
             Console.WriteLine(@"        ______");
             Console.WriteLine(@"       /     /\");
             Console.WriteLine(@"      /     /  \");
