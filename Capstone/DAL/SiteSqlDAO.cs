@@ -56,6 +56,15 @@ namespace Capstone.DAL
             site.Utilities = Convert.ToBoolean(reader["utilities"]);
 
             return site;
+            //site.SiteId = Convert.ToInt32(reader["site_id"]);
+            //site.CampgroundId = Convert.ToInt32(reader["campground_id"]);
+            //site.SiteNumber = Convert.ToInt32(reader["site_number"]);
+            //site.MaxOccupancy = Convert.ToInt32(reader["max_occupancy"]);
+            //site.Accessible = Convert.ToBoolean(reader["accessible"]);
+            //site.MaxRVLength = Convert.ToInt32(reader["max_rv_length"]);
+            //site.Utilities = Convert.ToBoolean(reader["utilities"]);
+
+            //return site;
         }
         public Site GetSite(int siteId)
         {
@@ -93,12 +102,12 @@ namespace Capstone.DAL
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    string sql = @"SELECT TOP 5 site_id FROM site 
+                    string sql = @"SELECT TOP 5 * FROM site 
                                 WHERE site.site_id NOT IN 
                                 (SELECT reservation.site_id FROM reservation 
                                 WHERE @StartDate BETWEEN reservation.from_date 
                                 AND reservation.to_date OR @EndDate between reservation.from_date AND reservation.to_date)
-                                AND site.campground_id = @campgroundId;";
+                                AND @campgroundId = site.campground_id;";
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@campgroundId", campgroundId);
