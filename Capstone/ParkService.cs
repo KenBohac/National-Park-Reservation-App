@@ -96,7 +96,20 @@ namespace Capstone
         {
             return this.SiteDAO.SearchForOpenSites(campgroundId, startDate, endDate);
         }
-         
+        public bool CheckForOpen(int campgroundId, DateTime startDate, DateTime endDate)
+        {
+             
+            IList<Site> searchResult = SearchForOpenSites(campgroundId, startDate, endDate);
+            bool result = searchResult.Count > 0 ? result = true : result = false;
+
+            return result;
+        }
+        public int CalculateStay(DateTime fromDate, DateTime toDate)
+        {
+            TimeSpan ts = toDate - fromDate;
+            int days = (int)ts.TotalDays;
+            return days;
+        }
     }
 
 

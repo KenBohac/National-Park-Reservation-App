@@ -97,13 +97,14 @@ namespace Capstone.DAL
                                 WHERE site.site_id NOT IN 
                                 (SELECT reservation.site_id FROM reservation 
                                 WHERE @StartDate BETWEEN reservation.from_date 
-                                AND reservation.to_dateOR @EndDate between reservation.from_date AND reservation.to_date)
-                                AND @campgroundID = site.campground_id; ";
+                                AND reservation.to_date OR @EndDate between reservation.from_date AND reservation.to_date)
+                                AND site.campground_id = @campgroundId;";
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@campgroundId", campgroundId);
                     cmd.Parameters.AddWithValue("@StartDate", startDate);
                     cmd.Parameters.AddWithValue("@EndDate", endDate);
-                    cmd.Parameters.AddWithValue("@campgroundId", campgroundId);
+                    
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
