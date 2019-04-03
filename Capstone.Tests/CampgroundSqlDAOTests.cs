@@ -9,7 +9,7 @@ namespace Capstone.Tests
 {
    
     [TestClass]
-    public class CampgroundSqlDAOTest : CapstoneTests
+    public class CampgroundSqlDAOTests : DALTestSetUp
     {
         [TestMethod]
         public void GetAllCampgrounds_ShouldReturn1()

@@ -9,7 +9,7 @@ using Capstone.Models;
 namespace Capstone.Tests
 {
     [TestClass]
-    public class ParkSqlDAOTest : CapstoneTests
+    public class ParkSqlDAOTest : DALTestSetUp
     {
         [TestMethod]
         public void GetAllParks_ShouldReturn1()

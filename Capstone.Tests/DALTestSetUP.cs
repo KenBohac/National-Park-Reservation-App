@@ -12,7 +12,7 @@ using Capstone.Models;
 namespace Capstone.Tests
 {
     [TestClass]
-    public class CapstoneTests
+    public class DALTestSetUp
     {
 
         protected string ConnectionString { get; } = "Server=.\\SQLEXPRESS;Database=npcampground;Trusted_Connection=True;";

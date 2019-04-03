@@ -7,10 +7,8 @@ using Capstone.Models;
 
 namespace Capstone.Tests
 {
-    public class SiteDAOTest: CapstoneTests
-    {
         [TestClass]
-        public class SiteSqlDAOTest : CapstoneTests
+        public class SiteSqlDAOTest : DALTestSetUp
         {
             [TestMethod]
             public void GetAllSites_ShouldReturn1()
@@ -37,5 +35,4 @@ namespace Capstone.Tests
                 Assert.AreEqual(1, sites.Count);
             }
         }
-    }
 }

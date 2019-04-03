@@ -8,7 +8,7 @@ using Capstone.Models;
 namespace Capstone.Tests
 {
     [TestClass]
-    public class ReservationSqlDAOTests : CapstoneTests
+    public class ReservationSqlDAOTests : DALTestSetUp
 
     {
         [TestMethod]
